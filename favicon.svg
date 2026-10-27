@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <title>Cedarwood Studio</title>
+  <style>
+    .ground { fill: #eff0ea; }
+    .ring { fill: none; stroke: #2e2721; stroke-width: 2.2; }
+    .pith { fill: #a2452f; }
+    @media (prefers-color-scheme: dark) {
+      .ground { fill: #1a1714; }
+      .ring { stroke: #e7e5dc; }
+      .pith { fill: #d98c72; }
+    }
+  </style>
+  <rect class="ground" width="32" height="32"/>
+  <clipPath id="billet"><rect x="2" y="2" width="28" height="28"/></clipPath>
+  <g clip-path="url(#billet)">
+    <g class="ring">
+      <circle cx="11" cy="23" r="6"/>
+      <circle cx="11" cy="23" r="13"/>
+      <circle cx="11" cy="23" r="21"/>
+      <circle cx="11" cy="23" r="30"/>
+    </g>
+    <circle class="pith" cx="11" cy="23" r="2.6"/>
+  </g>
+</svg>

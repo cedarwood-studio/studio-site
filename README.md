@@ -1,74 +1,90 @@
-# studio.jacksenechal.com — sales page (v1)
+# cedarwood.studio
 
-Static site: plain HTML + one CSS file + a few lines of vanilla JS, no build step, no framework.
-Lives here in the monorepo as `ventures/marketplace/site/`; deployed as its own GitHub repo
-(`locomotive-brain/studio-site` for now, transferring to Jack's account later, same as
-`ci-proof`) so GitHub Pages can serve it directly from repo root.
+The Cedarwood Studio landing site. Two static pages, one stylesheet, one SVG mark, **no
+JavaScript and no build step**. Served from this repository's root by GitHub Pages.
+
+```
+index.html     hero · what we do · how we work · selected work · proof · estimate
+about.html     Jack Senechal, the studio's stance, and the disclosure sentence
+styles.css     the whole design system (tokens, layout, both themes)
+favicon.svg    the studio mark, with its own dark-mode block
+og.png         1200×630 social card, rendered from the mark and the headline
+robots.txt     allow all · sitemap.xml · CNAME · .nojekyll
+```
+
+## Design
+
+**Palette** — six tokens named from cedar anatomy, defined complete in `:root` and redefined
+(never inverted) for dark:
+
+| Token | Light | Dark | Role |
+|---|---|---|---|
+| `--sapwood` | `#eff0ea` | `#1a1714` | page ground — a pale green-grey, biased toward the accent |
+| `--bark` | `#2e2721` | `#e7e5dc` | ink |
+| `--heartwood` | `#a2452f` | `#d98c72` | the one warm accent: the pith, step numbers, figures, focus ring |
+| `--shadow` | `#34503f` | `#93b79d` | forest-floor green — links and interactive state |
+| `--lichen` | `#62665b` | `#9fa195` | secondary text |
+| `--grain` | `#c9ccbe` | `#352f28` | hairlines and the ring divider |
+
+All text pairs clear WCAG AA on their own ground in both themes; the smallest text
+(`--lichen` at 13px) sits above 5:1 in light and 6.6:1 in dark. Dark mode is handled in three
+states: bare `:root` (light), `@media (prefers-color-scheme: dark)` guarded as
+`:root:not([data-theme="light"])`, and `:root[data-theme="dark"]`.
+
+**Type** — Spectral Light/Regular for display (a quiet screen serif, set light at large sizes),
+IBM Plex Sans for body, IBM Plex Mono for labels, figures and repository paths. Google Fonts,
+each with a real fallback stack. Five-step scale, one fluid.
+
+**Layout** — a single 44rem column with prose held to a 35rem measure, mobile-first, square
+corners throughout. The one repeated motif is the **grain rule**: three hairlines at widening
+intervals, the way growth rings read outward from the pith, used once per section boundary. The
+mark is the end grain of a milled cedar billet — an off-centre pith, four rings, squared off by
+the saw — drawn in SVG, not sourced.
+
+**Motion** — effectively none: a 120 ms colour transition on links and the button, plus a
+`prefers-reduced-motion` block. **Accessibility** — skip link, landmarks, visible focus ring,
+`aria-labelledby` on every section.
+
+## Placeholders
+
+Two, and only two.
+
+1. **The estimate form.** Both calls to action are currently `mailto:hello@cedarwood.studio`
+   with a prefilled subject and a three-question body. The real form arrives with the inbound
+   hardening work (locomotive **#54**); until then, the markup carries a commented `HOOK` at each
+   call site — replace the anchor with a `POST` form whose `action` is the **Basin** endpoint
+   (recommended in `docs/design/inbound-hardening.md` §9 over Formspree, whose honeypot is
+   paywalled), keep the honeypot field, and leave the copy and the one-call-to-action rule alone.
+
+2. **DNS.** `CNAME` says `cedarwood.studio`, and `og:url`, `canonical` and `sitemap.xml` all point
+   there. The record itself is Jack's step:
+
+   ```
+   CNAME   cedarwood.studio   cedarwood-studio.github.io
+   ```
+
+   …then set the custom domain in this repository's Pages settings. Putting Cloudflare in front
+   instead is the other option, and the one to take if email routing for
+   `hello@cedarwood.studio` moves to Cloudflare Email Routing (which requires the domain's DNS to
+   be on Cloudflare). Until the record resolves, the site is live at
+   <https://cedarwood-studio.github.io/studio-site/> — the canonical tag deliberately points at
+   the real domain, so the preview host does not get indexed as the site.
+
+Not placeholders, but worth knowing: **the `[JACK: approve]` item** is the single disclosure
+sentence on `about.html`, marked in an HTML comment at its location. Per charter D5 it lives on
+the about page only, is never volunteered as a pitch, and is answered truthfully whenever asked.
+
+## Content provenance
+
+Positioning and the three offers: locomotive **#32** Notes (2026-10-27). Checklist categories:
+`cedarwood-studio/ci-proof`'s README, which is the published list. Selected work: the two case
+studies in `ventures/marketplace/profile/case-studies/`, using only facts not marked `[JACK]`,
+client unnamed, no external links (the fuller writeups are not public). About-page facts:
+`ventures/marketplace/profile/jack-facts.md`. No prices appear anywhere — estimate-first is the
+model, and the Project Catalog is the only place tiers exist.
 
 ## Deploying
 
-This directory *is* the Pages site root. `.github/workflows/deploy-pages.yml` deploys on every
-push to `main` via the standard `actions/{configure-pages,upload-pages-artifact,deploy-pages}`
-flow — no build step, it just uploads the directory as-is.
-
-To stand up a fresh copy of this as its own repo:
-
-```
-gh repo create <owner>/<repo> --public --source ventures/marketplace/site --push
-gh api -X POST repos/<owner>/<repo>/pages -f build_type=workflow
-```
-
-Then confirm the Pages URL (`https://<owner>.github.io/<repo>/`) returns 200 once the deploy
-workflow finishes.
-
-## The three placeholders
-
-All three live in `config.js`, documented inline there. One edit each, nothing else in
-`index.html` or `app.js` needs to change:
-
-1. **Stripe Payment Links** (`stripeLinks.basic/standard/premium`) — create one Payment Link per
-   tier ($400/$900/$2,200) in the Stripe account from issue #51 (restricted API key stored in
-   Bitwarden as `STRIPE_RESTRICTED_KEY`). Use test-mode links until a real purchase needs to
-   complete; swap to live links before announcing the page anywhere real.
-2. **Form endpoint** (`formEndpoint`) — see "Form endpoint" below.
-3. **Contact email** (`contactEmail`) — the real brain-facing address lands via issue #52. Until
-   then this intentionally renders as a non-working `hello@PLACEHOLDER` rather than a guess.
-
-## Form endpoint
-
-The estimate form POSTs to whatever `config.js`'s `formEndpoint` names. Two options:
-
-- **(a) Formspree-style, no backend (current placeholder).** Create a Formspree form, point
-  `formEndpoint` at `https://formspree.io/f/<form-id>`, and set the form's notification address
-  to the real inbox once #52 lands. Netlify Forms works the same way if the site ever moves to
-  Netlify hosting instead of Pages — same `action` + `name` attributes, no JS change needed.
-- **(b) The brain's own intake endpoint (later).** Once the brain exposes an HTTP endpoint that
-  can receive Stage 1 intake directly (`ventures/marketplace/RUNBOOK.md` Stage 1), point
-  `formEndpoint` at that instead and the three-questions-within-the-hour loop closes without a
-  third-party form service in between.
-
-The form also carries a honeypot field (`#company`, visually hidden and out of tab order) — any
-submission with that field filled is spam and should be discarded by whichever endpoint receives
-it.
-
-## DNS (Jack's step)
-
-Once the real repo exists under Jack's account and Pages is enabled with the custom domain, add:
-
-```
-CNAME   studio   <owner>.github.io
-```
-
-The `CNAME` file in this directory already says `studio.jacksenechal.com` — GitHub Pages reads
-that automatically once the DNS record resolves and the custom domain is set in the repo's Pages
-settings. This v1 deploy does **not** set the custom domain via the API; the `CNAME` file is
-enough preparation, DNS and the Pages-settings custom-domain field are Jack's to finish.
-
-## Content sources
-
-Tier pricing/scope: `ventures/marketplace/profile/upwork-catalog-listing.md`. Checklist
-categories: `ventures/marketplace/templates/ci-proof/README.md`. Disclosure sentence: verbatim
-from `ventures/marketplace/profile/upwork-profile-draft.md` / `RUNBOOK.md` ground rules. Site
-stays off jacksenechal.com's main nav per `brain/memory/site-positioning.md` — it's a separate,
-findable subdomain, not an unlinked landing page, since this is the sales page itself rather than
-an Upwork-only portfolio link.
+`.github/workflows/deploy-pages.yml` uploads this directory as-is on every push to `main`. There
+is nothing to build. To check a change before pushing, open `index.html` from the filesystem —
+every path is relative, so it works with no server.
