@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jack Senechal — Studio</title>
+<meta name="description" content="Fixed-price CI/CD pipelines, upgrades, bug fixes, and containerization — built for your repo, verified green before delivery, with a human review on every job.">
+<link rel="canonical" href="https://studio.jacksenechal.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jack Senechal — Studio">
+<meta property="og:description" content="Fixed-price CI/CD pipelines, upgrades, bug fixes, and containerization — built for your repo, verified green before delivery, with a human review on every job.">
+<meta property="og:url" content="https://studio.jacksenechal.com/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jack Senechal — Studio">
+<meta name="twitter:description" content="Fixed-price CI/CD pipelines, upgrades, bug fixes, and containerization — built for your repo, verified green before delivery.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">Jack Senechal<small>Studio — fixed-price delivery, proof included</small></div>
+    <nav class="site-nav">
+      <a href="#tiers">Pricing</a>
+      <a href="#menu">Also on the menu</a>
+      <a href="#how">How we work</a>
+      <a href="#estimate">Get an estimate</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>A pipeline that runs green on your repo — not a demo.</h1>
+    <p class="lede">
+      Written for your stack, cross-checked against a published checklist, and verified on a
+      fresh clone before I hand it back. Fixed price, fast delivery, a human review before
+      anything ships.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#estimate">Get an estimate</a>
+      <a class="btn btn-secondary" href="#tiers">See pricing</a>
+    </div>
+  </div>
+</section>
+
+<section id="tiers">
+  <div class="wrap">
+    <h2>CI/CD pipeline setup</h2>
+    <p class="section-lede">
+      Three fixed-price tiers. Every tier is built against your own repo and your own test
+      command — never a generic template — and verified end to end before delivery.
+    </p>
+
+    <div class="tiers">
+      <div class="tier-card">
+        <p class="tier-name">Basic</p>
+        <p class="tier-price">$400</p>
+        <p class="tier-delivery">3-day delivery</p>
+        <ul>
+          <li>One GitHub Actions workflow (install → lint → test), written for your language and your existing test command</li>
+          <li>Dependency caching configured for your stack</li>
+          <li>A status badge wired into your README</li>
+          <li>Verified green on a fresh clone before handoff</li>
+        </ul>
+        <a class="btn btn-secondary buy-btn" data-tier="basic" href="#" target="_blank" rel="noopener">Buy Basic</a>
+      </div>
+
+      <div class="tier-card featured">
+        <p class="tier-name">Standard</p>
+        <p class="tier-price">$900</p>
+        <p class="tier-delivery">5-day delivery</p>
+        <ul>
+          <li>Everything in Basic, plus:</li>
+          <li>Build matrix across the OS/language versions you actually ship</li>
+          <li>A coverage gate, threshold negotiated against your codebase</li>
+          <li>Dependency audit using your stack's own tool</li>
+          <li>Branch protection with required status checks, Dependabot configured</li>
+        </ul>
+        <a class="btn btn-primary buy-btn" data-tier="standard" href="#" target="_blank" rel="noopener">Buy Standard</a>
+      </div>
+
+      <div class="tier-card">
+        <p class="tier-name">Premium</p>
+        <p class="tier-price">$2,200</p>
+        <p class="tier-delivery">10-day delivery</p>
+        <ul>
+          <li>Everything in Standard, plus:</li>
+          <li>Security scanning fitted to your stack (CodeQL and/or secret scanning)</li>
+          <li>Container build + scan, if you ship one</li>
+          <li>One deploy step to your existing target — your own secrets, your own platform</li>
+          <li>A short handoff doc: what was built, how to maintain it, how to rotate secrets</li>
+        </ul>
+        <a class="btn btn-secondary buy-btn" data-tier="premium" href="#" target="_blank" rel="noopener">Buy Premium</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="checklist">
+  <div class="wrap">
+    <h2>What we check</h2>
+    <p class="section-lede">
+      Every pipeline — adapted to your languages, your test runner, your stack — is checked
+      against the same internal list, organized by what it's checking rather than how.
+      <a href="https://github.com/locomotive-brain/ci-proof">See the proof repo</a> for a working
+      example of the kind of harness this builds; the checklist itself isn't published, but these
+      are the categories every engagement runs through, scoped to the proof the job actually needs.
+    </p>
+    <div class="checklist-grid">
+      <div class="item">
+        <h3>Pipeline structure</h3>
+        <p>Triggers, concurrency handling, dependency caching, matrix strategy, a single merge-gating job.</p>
+      </div>
+      <div class="item">
+        <h3>Correctness gates</h3>
+        <p>Lint, typecheck, unit/integration/regression tests, a negotiated coverage floor, a stated flaky-test policy.</p>
+      </div>
+      <div class="item">
+        <h3>Security</h3>
+        <p>Secret scanning, dependency vulnerability scanning, SAST/static analysis, container scanning, least-privilege permissions, pinned actions.</p>
+      </div>
+      <div class="item">
+        <h3>Supply chain</h3>
+        <p>Lockfile discipline, automated dependency updates, provenance/attestations where cheap.</p>
+      </div>
+      <div class="item">
+        <h3>Deploy safety</h3>
+        <p>Environments and reviewers, a named rollback path, no production credentials from us.</p>
+      </div>
+      <div class="item">
+        <h3>Observability</h3>
+        <p>Status badges, run summaries, artifact retention.</p>
+      </div>
+      <div class="item">
+        <h3>Maintainability</h3>
+        <p>A handoff doc, clear naming, one gate a branch-protection rule can point at.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step"><h3>Estimate</h3><p>Answer three quick questions, hear back within the hour.</p></div>
+      <div class="step"><h3>Fixed price</h3><p>A single price for the scope, agreed before anything starts.</p></div>
+      <div class="step"><h3>Milestone funded</h3><p>Work begins once the milestone is funded — no surprises on either side.</p></div>
+      <div class="step"><h3>Green pipeline delivered</h3><p>Built against your repo, verified on a fresh clone, not narrated.</p></div>
+      <div class="step"><h3>Human review</h3><p>Jack reviews the diff and the evidence before it goes out.</p></div>
+      <div class="step"><h3>Handoff</h3><p>You get the work, the evidence, and a short note on maintaining it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <h2>Also on the menu</h2>
+    <p class="section-lede">
+      CI/CD pipelines are the lead offer, but the same fixed-price, proof-first approach covers
+      a handful of other jobs with a clear, machine-checkable definition of done.
+    </p>
+    <div class="menu-list">
+      <div class="menu-row">
+        <div class="menu-text">
+          <strong>Dependency &amp; framework upgrades</strong>
+          <span>Bumped with your test suite kept green the whole way. Monthly retainer available.</span>
+        </div>
+        <a class="btn btn-secondary" href="#estimate" data-preselect="upgrades">Get an estimate</a>
+      </div>
+      <div class="menu-row">
+        <div class="menu-text">
+          <strong>Bug fixes with a reproducing test</strong>
+          <span>A failing test that proves the bug, then a fix that turns it green.</span>
+        </div>
+        <a class="btn btn-secondary" href="#estimate" data-preselect="bugfix">Get an estimate</a>
+      </div>
+      <div class="menu-row">
+        <div class="menu-text">
+          <strong>Containerize an app</strong>
+          <span>Docker, a real healthcheck, and an image scan — not just a Dockerfile that builds.</span>
+        </div>
+        <a class="btn btn-secondary" href="#estimate" data-preselect="containerize">Get an estimate</a>
+      </div>
+      <div class="menu-row">
+        <div class="menu-text">
+          <strong>Pipeline repair</strong>
+          <span>Red to green, with the root cause documented so it doesn't come back.</span>
+        </div>
+        <a class="btn btn-secondary" href="#estimate" data-preselect="repair">Get an estimate</a>
+      </div>
+    </div>
+    <p class="menu-closer">
+      Something else? If it has a clear definition of done we can check by machine, ask for an
+      estimate.
+    </p>
+  </div>
+</section>
+
+<section id="disclosure">
+  <div class="wrap">
+    <h2>How we work</h2>
+    <div class="disclosure-block">
+      <p>My studio uses automated verification and AI tooling; you get a green test suite and a human review before delivery.</p>
+      <p>Repo access only, every tier — no production or live-site credentials, ever. For any
+      deploy step, you wire your own secrets into your own platform; we write the workflow to use
+      them by reference and never hold or create production credentials.</p>
+    </div>
+  </div>
+</section>
+
+<section id="estimate">
+  <div class="wrap">
+    <h2>Get an estimate</h2>
+    <p class="section-lede">
+      Three questions decide the spec and the price. Send these and you'll hear back within the
+      hour.
+    </p>
+    <form class="estimate" id="estimate-form" method="POST">
+      <div class="field hp-field" aria-hidden="true">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="two-col">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="offer">What do you need?</label>
+        <select id="offer" name="offer" required>
+          <option value="">Choose one</option>
+          <option value="cicd">CI/CD pipeline setup</option>
+          <option value="upgrades">Dependency &amp; framework upgrades</option>
+          <option value="bugfix">Bug fix with a reproducing test</option>
+          <option value="containerize">Containerize an app</option>
+          <option value="repair">Pipeline repair (red → green)</option>
+          <option value="other">Something else</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="repo">Repo URL or stack</label>
+        <input type="text" id="repo" name="repo" placeholder="github.com/you/repo, or e.g. Python/Django" required>
+      </div>
+
+      <div class="field">
+        <label for="ci_state">Current CI/test state</label>
+        <select id="ci_state" name="ci_state" required>
+          <option value="">Choose one</option>
+          <option value="none">No CI yet</option>
+          <option value="broken">CI exists but it's flaky or broken</option>
+          <option value="working">CI works, this is an addition</option>
+          <option value="unsure">Not sure</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="green">What does "green" mean for you?</label>
+        <textarea id="green" name="green" placeholder="e.g. every PR runs lint + tests before merge, or: this one failing test needs to pass again" required></textarea>
+      </div>
+
+      <div class="two-col">
+        <div class="field">
+          <label for="timeline">Timeline</label>
+          <select id="timeline" name="timeline" required>
+            <option value="">Choose one</option>
+            <option value="asap">ASAP / this week</option>
+            <option value="2weeks">Within 2 weeks</option>
+            <option value="month">Within a month</option>
+            <option value="flexible">Flexible</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="budget">Budget band</label>
+          <select id="budget" name="budget" required>
+            <option value="">Choose one</option>
+            <option value="u500">Under $500</option>
+            <option value="500-1000">$500–$1,000</option>
+            <option value="1000-2500">$1,000–$2,500</option>
+            <option value="2500plus">$2,500+</option>
+            <option value="unsure">Not sure yet</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button class="btn btn-primary" type="submit">Send</button>
+        <p class="form-note">No spam, no newsletter — this goes straight to the estimate queue.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; 2026 Jack Senechal</span>
+    <a href="https://github.com/locomotive-brain/ci-proof">Proof repo</a>
+    <a href="https://jacksenechal.com">jacksenechal.com</a>
+    <a id="footer-email" href="#">hello@PLACEHOLDER</a>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
