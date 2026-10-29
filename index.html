@@ -4,19 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cedarwood Studio</title>
-<meta name="description" content="Cedarwood Studio builds delivery pipelines, cloud platforms, and AI pipelines. Senior infrastructure engineering, delivered with proof. Fixed scope and price, estimated within a day.">
+<meta name="description" content="A software and infrastructure studio. Jack Senechal, principal. California.">
 <link rel="canonical" href="https://cedarwood.studio/">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Cedarwood Studio">
 <meta property="og:title" content="Cedarwood Studio">
-<meta property="og:description" content="Senior infrastructure engineering, delivered with proof. Delivery pipelines, cloud platforms, and AI pipelines. Fixed scope and price, estimated within a day.">
+<meta property="og:description" content="A software and infrastructure studio. Jack Senechal, principal. California.">
 <meta property="og:url" content="https://cedarwood.studio/">
 <meta property="og:image" content="https://cedarwood.studio/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Cedarwood Studio: senior infrastructure engineering, delivered with proof.">
+<meta property="og:image:alt" content="Cedarwood Studio">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -24,7 +24,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:wght@300;400;500&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -50,253 +50,16 @@
     </svg>
     <span><b>Cedarwood</b> Studio</span>
   </a>
-  <nav aria-label="Sections">
-    <ul>
-      <li><a href="#what-we-do">What we do</a></li>
-      <li><a href="#how-we-work">How we work</a></li>
-      <li><a href="#selected-work">Selected work</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </nav>
 </header>
 
 <main id="main" class="column">
-
-  <!-- ===================== hero ===================== -->
-  <section class="hero stack stack-4" aria-labelledby="hero-title">
-    <h1 id="hero-title">Senior infrastructure engineering, delivered with proof.</h1>
-    <p class="lead">We build the parts of a system that have to hold: the pipeline that gates every
-      merge, the platform the service runs on, the AI pipeline that has to be measurable before
-      anyone trusts it. Every engagement ends with evidence you can run yourself, not a status
-      report.</p>
-    <div class="cta-row">
-      <!-- Placeholder: mailto until the hardened estimate form lands (locomotive #54).
-           HOOK: when the form is ready, replace this anchor with the POST form and
-           point its action at the Basin endpoint (see README "Estimate form"). The
-           copy, the heading and the one-call-to-action rule stay exactly as they are. -->
-      <a class="cta" href="mailto:hello@cedarwood.studio?subject=Estimate%20request&amp;body=A%20few%20lines%20to%20start%3A%0A%0A1.%20What%20needs%20building%2C%20fixing%2C%20or%20operating%0A2.%20The%20repository%20or%20stack%20it%20lives%20in%0A3.%20When%20you%20need%20it%20done%0A%0A">Request an estimate</a>
-      <p class="note">An estimate within a day. Fixed scope and fixed price before any work begins.</p>
-    </div>
+  <section class="hero stack stack-4">
+    <h1 class="lead">A software and infrastructure studio. Jack Senechal, principal. California.</h1>
+    <p><a href="mailto:hello@cedarwood.studio">hello@cedarwood.studio</a></p>
   </section>
-
-  <!-- ===================== what we do ===================== -->
-  <section id="what-we-do" aria-labelledby="what-we-do-title">
-    <div class="grain" aria-hidden="true"></div>
-    <div class="stack stack-2">
-      <p class="label">What we do</p>
-      <h2 id="what-we-do-title">Three kinds of work</h2>
-      <p class="measure" style="padding-block-start: var(--s2);">Each one is scoped to your
-        repository and your stack. There is no standard package, and nothing here is a product we
-        install on top of your system.</p>
-    </div>
-
-    <article class="offer stack stack-2">
-      <h3>Delivery pipelines</h3>
-      <p class="measure">A build-and-release pipeline for a codebase that doesn’t have one, or a
-        repair for one nobody trusts. Triggers, caching, a matrix where it earns its keep, and a
-        single merge-gating job that a branch-protection rule can point at.</p>
-      <dl>
-        <dt class="label">What you get</dt>
-        <dd>Workflows in your repository, under your review, with least-privilege permissions and
-          pinned actions. Lint, typecheck, and your test suite running on a real service, not a
-          mock. A handoff document that explains every gate and how to change it.</dd>
-        <dt class="label">Proof of done</dt>
-        <dd>A green pipeline on your repository, gating merges, with the run history in front of
-          you. We also show you a red one: a deliberate failure that proves the gate stops what
-          it claims to stop.</dd>
-      </dl>
-    </article>
-
-    <article class="offer stack stack-2">
-      <h3>Platform and cloud engineering</h3>
-      <p class="measure">Kubernetes, managed cloud services, and the infrastructure code that
-        describes them. Migrations off a hand-built environment, a rollback path that someone has
-        actually walked, and the secrets handling that should have come first.</p>
-      <dl>
-        <dt class="label">What you get</dt>
-        <dd>Infrastructure as code (Terraform, Pulumi, or Helm, to match what you already run),
-          with environments, reviewers, and a named rollback path. No production credentials held
-          on our side, on any engagement.</dd>
-        <dt class="label">Proof of done</dt>
-        <dd>Infrastructure that passes its own checks: a clean plan with no drift, the policy and
-          scanning gates green, and a post-deploy check against the live environment rather than
-          against the build that produced it.</dd>
-      </dl>
-    </article>
-
-    <article class="offer stack stack-2">
-      <h3>AI pipelines, built from scratch</h3>
-      <p class="measure">A greenfield pipeline around a model (retrieval, tool use, structured
-        extraction, or a batch scoring job), designed from the start around the thing that makes
-        it a system rather than a demo: a way to tell whether it got better or worse.</p>
-      <dl>
-        <dt class="label">What you get</dt>
-        <dd>The pipeline, a graded set of cases drawn from your real inputs, and a scoring harness
-          that runs in CI against that set. Prompts and model versions in version control, so a
-          change in behaviour has a commit attached to it.</dd>
-        <dt class="label">Proof of done</dt>
-        <dd>An eval suite with a regression threshold the build enforces, and a scored baseline
-          you can compare every later change against.</dd>
-      </dl>
-    </article>
-  </section>
-
-  <!-- ===================== how we work ===================== -->
-  <section id="how-we-work" aria-labelledby="how-we-work-title">
-    <div class="grain" aria-hidden="true"></div>
-    <div class="stack stack-4">
-      <div class="stack stack-2">
-        <p class="label">How we work</p>
-        <h2 id="how-we-work-title">Estimate first, in five steps</h2>
-      </div>
-
-      <ol class="process">
-        <li><b>An estimate within a day</b><span>You send the repository or a description of the
-          system. We come back with a scope, a price, and the two or three things that would move
-          the number most. It is written the way a technical spike is: from evidence
-          rather than a guess.</span></li>
-        <li><b>Fixed scope and fixed price</b><span>Agreed in writing before anything starts. No
-          hourly billing, no published rate card, no estimate that quietly becomes a
-          range.</span></li>
-        <li><b>The milestone is funded</b><span>Money goes into escrow against a defined
-          milestone. Work begins after that, and the funding gate is what makes the delivery claim
-          worth anything.</span></li>
-        <li><b>Delivery, machine-verified and human-reviewed</b><span>Every change goes through the
-          gates below before it reaches you, and a senior engineer reviews what comes out of
-          them.</span></li>
-        <li><b>Handoff</b><span>A written operating document, the gates explained, and a repository
-          your own team can keep without us. Nothing in the delivery depends on our staying
-          involved.</span></li>
-      </ol>
-    </div>
-
-    <div class="stack stack-3" style="padding-block-start: var(--s5);">
-      <div class="stack stack-2">
-        <p class="label">What we check</p>
-        <h3>Eight categories, every engagement</h3>
-        <p class="measure note">Every harness we write is cross-checked against the same internal
-          list, scoped to the proof the job actually needs. The list itself is a working document
-          and keeps changing. The categories are published, and these are they.</p>
-      </div>
-      <hr class="hair">
-      <dl class="checks">
-        <div><dt><dfn class="label">Pipeline structure</dfn></dt><dd><p>Triggers, concurrency, caching, matrix strategy, one merge-gating job.</p></dd></div>
-        <div><dt><dfn class="label">Correctness gates</dfn></dt><dd><p>Lint, typecheck, unit and integration tests, a negotiated coverage floor, a stated flaky-test policy, migration-apply verification.</p></dd></div>
-        <div><dt><dfn class="label">Security</dfn></dt><dd><p>Secret scanning, dependency vulnerability scanning, static analysis, container scanning, least-privilege permissions, pinned actions.</p></dd></div>
-        <div><dt><dfn class="label">Supply chain</dfn></dt><dd><p>Lockfile discipline, automated dependency updates, provenance where it is cheap, behavioural malicious-package scanning, a minimum-release-age floor.</p></dd></div>
-        <div><dt><dfn class="label">Deploy safety</dfn></dt><dd><p>Environments and reviewers, a named rollback path, and no production credentials held by us.</p></dd></div>
-        <div><dt><dfn class="label">Deploy verification</dfn></dt><dd><p>Post-deploy checks against the live artifact, and real-browser checks against a deployed preview.</p></dd></div>
-        <div><dt><dfn class="label">Observability</dfn></dt><dd><p>Status badges, run summaries, artifact retention, and declared schedules reconciled against real run history.</p></dd></div>
-        <div><dt><dfn class="label">Maintainability</dfn></dt><dd><p>A handoff document, clear naming, and one gate a branch-protection rule can point at.</p></dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <!-- ===================== selected work ===================== -->
-  <section id="selected-work" aria-labelledby="selected-work-title">
-    <div class="grain" aria-hidden="true"></div>
-    <div class="stack stack-4">
-      <div class="stack stack-2">
-        <p class="label">Selected work</p>
-        <h2 id="selected-work-title">Two rounds with one client</h2>
-        <p class="measure note">A private engagement, described with the client unnamed at their
-          preference. The figures below are counted from the repository, not estimated.</p>
-      </div>
-
-      <div class="work">
-        <article>
-          <p class="label">Greenfield web application</p>
-          <h3>Replacing a WordPress reservation site with an application the client can maintain
-            alone</h3>
-          <p>A family trust’s private reservation site (booking a shared lake house, browsing
-            photos, storing board documents) ran on WordPress, with an outside plugin vendor in
-            the loop for anything past a content edit. That dependency was the friction. The brief
-            was a clean replacement on a stack one person could operate.</p>
-          <p>The rebuild opened with a dated technical spike rather than a leap: stand up the
-            target stack end to end (CMS backend, Postgres, file storage, transactional email,
-            all deploying from GitHub) and prove authentication, uploads, and the data model
-            before committing to a plan. The spike produced the estimate, and named the WordPress
-            data migration and a media-privacy decision as the two largest sources of variance.</p>
-          <p>Every change since ships through one required gate: lint, typecheck, and a
-            schema-migration-drift check ahead of the full suite, run against a real database
-            rather than a mock. A behavioural dependency scanner catches malicious and typosquatted
-            packages, not only known CVEs. A separate required check runs against the live deployed
-            site, because a green build and a working deploy are not the same claim.</p>
-          <ul class="figures">
-            <li><b>86 to 144 h</b><span>Estimated from the spike, not guessed</span></li>
-            <li><b>~100 + 22</b><span>Unit and integration specs, plus end-to-end</span></li>
-            <li><b>44</b><span>Committed schema migrations</span></li>
-            <li><b>~130</b><span>Automated test files</span></li>
-            <li><b>1</b><span>Maintainer the system is designed to need</span></li>
-          </ul>
-        </article>
-
-        <article>
-          <p class="label">Prior engagement, same client</p>
-          <h3>The WordPress booking system, and the case that replaced it</h3>
-          <p>Before the rebuild, the same client ran its reservations on WordPress: a working
-            booking calendar, delivered and in daily use by a private membership rather than the
-            public. It did the job for years.</p>
-          <p>What ended it was not a failure but two compounding costs. Any structural change meant
-            a round trip through an outside plugin vendor. And the stack had grown past what the
-            client’s eventual single maintainer could safely operate alone. WordPress’s own
-            template and plugin layering was later assessed, while scoping the replacement, at
-            roughly double the effort per task compared with the stack that replaced it. The
-            decision to rebuild was made against a measured number, on a system we had operated
-            ourselves, rather than against a preference for newer tools.</p>
-          <ul class="figures">
-            <li><b>~2×</b><span>Effort per task, WordPress versus the replacement stack</span></li>
-            <li><b>0</b><span>Structural changes possible without the vendor</span></li>
-          </ul>
-        </article>
-    </div>
-  </section>
-
-  <!-- ===================== proof ===================== -->
-  <section id="proof" aria-labelledby="proof-title">
-    <div class="grain" aria-hidden="true"></div>
-    <div class="proof">
-      <div class="stack stack-2">
-        <p class="label">Proof</p>
-        <h2 id="proof-title">An example of the kind of harness we build, kept green</h2>
-      </div>
-      <p><code class="repo">cedarwood-studio/ci-proof</code> is a small, real, two-language
-        codebase: a TypeScript service and a Python one, each with unit tests, an integration
-        test, and a container build with a working healthcheck. It is not something we install on
-        your project; your pipeline is written for your repository and your stack. It is ours, run
-        on every push, so that the discipline behind the categories above is visible rather than
-        asserted.</p>
-      <p><a href="https://github.com/cedarwood-studio/ci-proof">Read the repository and its run
-        history</a>: every workflow run, live, including the failed ones.</p>
-    </div>
-  </section>
-
-  <!-- ===================== closing ===================== -->
-  <section id="estimate" aria-labelledby="estimate-title">
-    <div class="grain" aria-hidden="true"></div>
-    <div class="stack stack-4">
-      <div class="stack stack-2">
-        <h2 id="estimate-title">Tell us what needs building.</h2>
-        <p class="measure lead">A description of the system and what has to be true when it is
-          done is enough to start. You get a scope, a price, and the honest sources of variance,
-          within a day.</p>
-      </div>
-      <div class="cta-row">
-        <!-- Same placeholder and the same HOOK as the hero. One call to action, two places. -->
-        <a class="cta" href="mailto:hello@cedarwood.studio?subject=Estimate%20request&amp;body=A%20few%20lines%20to%20start%3A%0A%0A1.%20What%20needs%20building%2C%20fixing%2C%20or%20operating%0A2.%20The%20repository%20or%20stack%20it%20lives%20in%0A3.%20When%20you%20need%20it%20done%0A%0A">Request an estimate</a>
-      </div>
-    </div>
-  </section>
-
 </main>
 
 <footer class="site-footer column">
-  <ul>
-    <li><a href="mailto:hello@cedarwood.studio">hello@cedarwood.studio</a></li>
-    <li><a href="https://github.com/cedarwood-studio">github.com/cedarwood-studio</a></li>
-    <li><a href="https://jacksenechal.com">jacksenechal.com</a></li>
-    <li><a href="about.html">About the studio</a></li>
-  </ul>
   <p class="copyright">&copy; 2026 Cedarwood Studio</p>
 </footer>
 

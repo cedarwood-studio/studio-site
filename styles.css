@@ -9,10 +9,10 @@
      shadow     forest-floor green          links and interactive state
      lichen     grey-green                  secondary text
      grain      ring lines                  hairlines and dividers
-   plus `panel`, a single lifted surface for the work entries.
+   plus `panel`, a single lifted surface, kept in the tokens for when a
+   portfolio page returns.
 
    Type: Spectral (display serif, Light/Regular) + IBM Plex Sans (body)
-         + IBM Plex Mono (labels, figures, paths)
    ========================================================================== */
 
 /* --- tokens: light (complete set lives here) ----------------------------- */
@@ -139,31 +139,7 @@ strong { font-weight: 600; }
 
 main > section { padding-block: 0 var(--s6); }
 
-/* The grain rule: four hairlines at widening intervals, the way cedar
-   rings read outward from the pith. Used once at each major boundary. */
-.grain {
-  height: 19px;
-  margin-block: 0 var(--s4);
-  background-image: linear-gradient(
-    to bottom,
-    var(--grain) 0 1px, transparent 1px 6px,
-    var(--grain) 6px 7px, transparent 7px 18px,
-    var(--grain) 18px 19px
-  );
-}
-
 .hair { height: 1px; background: var(--grain); border: 0; margin: 0; }
-
-/* --- labels -------------------------------------------------------------- */
-
-.label {
-  font-family: var(--font-mono);
-  font-size: var(--t-xs);
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  color: var(--lichen);
-  font-weight: 500;
-}
 
 .lead {
   font-size: var(--t-m);
@@ -171,8 +147,6 @@ main > section { padding-block: 0 var(--s6); }
   color: var(--bark);
   font-weight: 300;
 }
-
-.note { font-size: var(--t-s); color: var(--lichen); }
 
 /* --- masthead ------------------------------------------------------------ */
 
@@ -216,198 +190,10 @@ a.wordmark:hover .billet { stroke: var(--heartwood); }
 a.wordmark:hover { color: var(--bark); }
 a.wordmark:hover .ring { stroke: var(--heartwood); }
 
-.masthead nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s2) var(--s3);
-  list-style: none;
-}
-.masthead nav a {
-  font-size: var(--t-s);
-  color: var(--lichen);
-  text-decoration: none;
-}
-.masthead nav a:hover { color: var(--heartwood); text-decoration: underline; }
-
 /* --- hero ---------------------------------------------------------------- */
 
 .hero { padding-block: 0 var(--s7); }
-.hero h1 { max-width: 30rem; }
-.hero .lead { max-width: var(--measure); }
-
-.cta-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--s2) var(--s4);
-  padding-block-start: var(--s2);
-}
-
-.cta {
-  display: inline-block;
-  background: var(--bark);
-  color: var(--sapwood);
-  font-family: var(--font-body);
-  font-size: var(--t-base);
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  text-decoration: none;
-  padding: 0.8rem 1.6rem;
-  border: 1px solid var(--bark);
-  border-radius: 2px;
-}
-.cta:hover { background: var(--heartwood); border-color: var(--heartwood); color: #fff; }
-:root[data-theme="dark"] .cta:hover,
-.cta:hover { color: var(--sapwood); }
-
-/* --- offers: a stacked list, not a row of cards -------------------------- */
-
-.offer { padding-block: var(--s4) 0; }
-.offer:first-of-type { padding-block-start: var(--s3); }
-.offer + .offer { border-top: 1px solid var(--grain); }
-.offer h3 { padding-block-start: 0; }
-
-.offer dl {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--s1) var(--s3);
-  max-width: var(--measure);
-}
-.offer dt { padding-block-start: var(--s2); }
-.offer dd { font-size: var(--t-s); }
-
-@media (min-width: 42rem) {
-  .offer dl { grid-template-columns: 9.5rem 1fr; align-items: baseline; }
-  .offer dt { padding-block-start: var(--s2); }
-  .offer dd { padding-block-start: var(--s2); }
-}
-
-/* --- process: a real sequence, so it is numbered -------------------------- */
-
-.process {
-  list-style: none;
-  counter-reset: step;
-  display: flex;
-  flex-direction: column;
-  gap: var(--s3);
-  max-width: var(--measure);
-}
-.process li {
-  counter-increment: step;
-  display: grid;
-  grid-template-columns: 2.25rem 1fr;
-  gap: 0.15rem var(--s2);
-}
-.process li::before {
-  content: counter(step, decimal-leading-zero);
-  grid-column: 1;
-  grid-row: 1 / span 2;
-  font-family: var(--font-mono);
-  font-size: var(--t-xs);
-  font-variant-numeric: tabular-nums;
-  color: var(--heartwood);
-  padding-block-start: 0.35em;
-}
-.process b { grid-column: 2; grid-row: 1; font-weight: 600; }
-.process span { grid-column: 2; grid-row: 2; font-size: var(--t-s); color: var(--lichen); }
-
-/* --- what we check: eight published categories --------------------------- */
-
-.checks {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--s3) var(--s4);
-}
-@media (min-width: 40rem) {
-  .checks { grid-template-columns: 1fr 1fr; }
-}
-.checks > div { display: flex; flex-direction: column; gap: 0.2rem; }
-.checks dfn { font-style: normal; }
-.checks p { font-size: var(--t-s); color: var(--lichen); }
-
-/* --- selected work: the one place that gets a filled surface ------------- */
-
-.work { display: flex; flex-direction: column; gap: var(--s3); }
-
-.work article {
-  background: var(--panel);
-  padding: var(--s4) clamp(1.25rem, 3vw, 2rem);
-  display: flex;
-  flex-direction: column;
-  gap: var(--s2);
-}
-.work h3 { font-size: 1.3125rem; max-width: 30rem; }
-.work p { font-size: var(--t-s); max-width: var(--measure); }
-.work .figures {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
-  gap: var(--s4) var(--s3);
-  margin-block-start: var(--s2);
-  padding-block-start: var(--s3);
-  border-top: 1px solid var(--grain);
-}
-.work .figures li { display: flex; flex-direction: column; gap: 0.1rem; }
-.work .figures b {
-  font-family: var(--font-mono);
-  font-size: 1.1875rem;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.01em;
-  color: var(--heartwood);
-  line-height: 1.2;
-}
-.work .figures span {
-  font-size: var(--t-xs);
-  line-height: 1.4;
-  color: var(--lichen);
-}
-
-/* --- proof --------------------------------------------------------------- */
-
-.proof {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s3);
-  max-width: var(--measure);
-}
-.repo {
-  font-family: var(--font-mono);
-  font-size: var(--t-s);
-  word-break: break-word;
-}
-
-/* --- about page ---------------------------------------------------------- */
-
-.prose { max-width: var(--measure); display: flex; flex-direction: column; gap: var(--s3); }
-
-.roles { list-style: none; display: flex; flex-direction: column; gap: var(--s4); max-width: var(--measure); }
-.roles h3 { font-size: 1.1875rem; }
-.roles p { font-size: var(--t-s); padding-block-start: var(--s1); }
-.roles .when {
-  font-family: var(--font-mono);
-  font-size: var(--t-xs);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
-  color: var(--lichen);
-  display: block;
-  padding-block-end: 0.2rem;
-}
-
-.facts { display: flex; flex-direction: column; gap: var(--s2); max-width: var(--measure); }
-.facts > div { display: grid; grid-template-columns: 1fr; gap: 0.1rem; }
-@media (min-width: 36rem) {
-  .facts > div { grid-template-columns: 8.5rem 1fr; gap: var(--s3); align-items: baseline; }
-}
-.facts dd { font-size: var(--t-s); }
-
-.disclosure {
-  border-left: 2px solid var(--heartwood);
-  padding-inline-start: var(--s3);
-  max-width: var(--measure);
-  font-size: var(--t-s);
-  color: var(--lichen);
-}
+.hero h1 { max-width: var(--measure); }
 
 /* --- footer -------------------------------------------------------------- */
 
@@ -415,25 +201,15 @@ a.wordmark:hover .ring { stroke: var(--heartwood); }
   padding-block: var(--s4) var(--s5);
   border-top: 1px solid var(--grain);
 }
-.site-footer ul {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s2) var(--s4);
-  font-size: var(--t-s);
-}
-.site-footer a { color: var(--lichen); text-decoration: none; }
-.site-footer a:hover { color: var(--heartwood); text-decoration: underline; }
 .site-footer .copyright {
   font-size: var(--t-xs);
   color: var(--lichen);
-  padding-block-start: var(--s3);
   font-variant-numeric: tabular-nums;
 }
 
 /* --- honest motion: effectively none ------------------------------------- */
 
-a, .cta { transition: color 120ms linear, background-color 120ms linear, border-color 120ms linear; }
+a { transition: color 120ms linear, background-color 120ms linear, border-color 120ms linear; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -448,5 +224,4 @@ a, .cta { transition: color 120ms linear, background-color 120ms linear, border-
 
 @media print {
   body { background: #fff; color: #000; }
-  .masthead nav, .cta-row { display: none; }
 }
